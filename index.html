@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Афиша кинотеатра</title>
+    <link rel="stylesheet" href="styles.css?v=1.0">
+</head>
+
+<body>
+    <header>
+        <h1>Афиша</h1>
+    </header>
+
+    <!-- <div class="date-selector">
+        <button onclick="filterMovies('today')">Сегодня </button>
+        <button onclick="filterMovies('tomorrow')">Завтра </button>
+        <button onclick="filterMovies('dayAfterTomorrow')"><span id="dayAfterTomorrowDate"></span></button>
+        <button onclick="filterMovies('nextDay2')"><span id="nextDay2Date"></span></button>
+        <button onclick="filterMovies('nextDay3')"><span id="nextDay3Date"></span></button>
+        
+    </div> -->
+
+    <!-- Модальное окно -->
+    <div id="movie-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <img id="modal-poster" src="" alt="Постер фильма">
+                <div class="movie-details">
+                    <h3 id="modal-title"></h3>
+                    <h4>Где</h4>
+                    <div id="cinema-buttons"></div>
+                    <h4>Когда</h4>
+                    <div id="date-buttons"></div>
+                    <h4>Во сколько</h4>
+                    <div id="time-buttons"></div> 
+                    <!-- Новый код для ввода электронной почты и кнопки отправки -->
+                    <div class="email-submission">
+                         <input type="email" id="email-input" placeholder="Введите ваш email">
+                         <button id="submit-button">Отправить заявку</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <main id="movies-list">
+        <!-- Разделы для кинотеатров и их фильмов будут добавлены динамически -->
+    </main>
+    
+    <script>
+        // Проверяем, был ли посетитель на сайте (есть ли куки)
+        if (document.cookie.includes("visited")) {
+            console.log('Посетитель уже был на сайте');
+        } else {
+            // Установить cookie на 1 год, чтобы отличить новых посетителей
+            const expirationDate = new Date();
+            expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+            document.cookie = "visited=true; expires=" + expirationDate.toUTCString() + "; path=/";
+    
+            // Увеличить счетчик посещений
+            fetch('update_counter.php', {
+                method: 'POST'
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Счетчик посещений успешно обновлен');
+                } else {
+                    console.error('Произошла ошибка при обновлении счетчика посещений');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка при обращении к серверу:', error);
+            });
+        }
+    </script>
+    
+    <script src="script.js?v=<?php echo time(); ?>"></script>
+</body>
+
+</html>

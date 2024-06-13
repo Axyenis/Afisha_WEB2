@@ -1,0 +1,263 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #cab887; 
+    
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 64px; /* Размер шрифта заголовка */
+    margin: 0;
+}
+h2 {
+    text-align: center;
+}
+h3{
+    margin-bottom: 0px;
+}
+h4{
+    /* text-align: center; */
+    font-size: small;
+}
+.date-selector button {
+    background-color: #cfb772; 
+    color: rgb(0, 0, 0); 
+    border: none; 
+    padding: 5px 25px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 15px; 
+    transition: background-color 0.3s ease; 
+  }
+
+
+.date-selector button:hover {
+    background-color: #af9a5b; 
+}  
+
+.cinema-movies{
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+    background-color: #cfb772;
+    border-radius: 15px; /* Закругленные углы */
+    margin: 5px 50px; 
+}
+
+.date-selector, .city-selector {
+    background-color: #333;
+    padding-left: 50px;
+    text-align: left;
+}
+.city-selector{
+    padding-bottom: 4px;
+}
+
+.date-selector button, .city-selector button {
+    margin-right: 5px;
+}
+
+.cinema-section{
+    background-color: #cfb772;
+    margin: 20px;
+    border-radius: 10px; /* Закругляем углы */
+}
+
+.main {
+    padding: 20px;
+}
+
+.movie {
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    width: 200px; /* Устанавливаем ширину 200px */
+    overflow: visible;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.movie img {
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;  
+    object-fit: cover;
+    object-position: center;
+    transition: 0.2s all;
+}
+
+.movie:hover img {
+    transform: scale(1.05); /* Увеличиваем изображение при наведении */
+    border-radius: 10px; /* Сохраняем скругленные углы */
+}
+
+.movie:hover h3.marquee {
+    animation: marquee 5s linear infinite; /* Применяем анимацию при наведении на блок фильма */
+}
+
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.cinema-section h2 {
+    border-radius: 10px 10px 0 0;  
+    background-image: linear-gradient(to bottom, #793701, #cfb772);
+    padding: 20px;
+    color: #f5dcc5;
+}
+
+/* Модальное окно */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #cfb772;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 600px;
+    border-radius: 10px; 
+}
+
+.close {
+    color: #382303;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    display: flex;
+}
+
+.modal-body img {
+    max-width: 150px;
+    max-height: 200px;
+    margin-right: 20px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+}
+
+#cinema-buttons,
+#date-buttons,
+#time-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    gap: 5px;
+}
+
+#cinema-buttons button,
+#date-buttons button,
+#time-buttons button{
+    background-color: #74431c;
+    color: rgb(255, 231, 196); 
+    border: none; 
+    padding: 5px 25px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 20px; 
+    transition: background-color 0.3s ease; 
+    margin-bottom: 0px;
+}
+
+#date-buttons button:hover,
+#cinema-buttons button:hover,
+#time-buttons button:hover{
+    background-color: #793701;
+}
+
+#modal-schedule {
+    margin-top: 10px;
+}
+
+.movie-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px; /* Отступ от постера */
+}
+
+#modal-title {
+    margin-top: 0; /* Убираем верхний отступ у названия */
+}
+
+#cinema-buttons button.selected,
+#date-buttons button.selected, 
+#time-buttons button.selected{
+    background-color: #333;
+}
+
+.email-submission {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+#email-input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #74431c;
+    margin-bottom: 10px;
+    width: 80%;
+    max-width: 300px;
+}
+
+#submit-button {
+    background-color: #333;
+    color: #f5dcc5;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#submit-button:hover {
+    background-color: #793701;
+}
